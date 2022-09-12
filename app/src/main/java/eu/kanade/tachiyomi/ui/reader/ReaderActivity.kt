@@ -507,10 +507,17 @@ class ReaderActivity : BaseRxActivity<ReaderPresenter>() {
 
         // Settings sheet
         with(binding.actionSettings) {
+            var userCanTap = true
             setTooltip(R.string.action_settings)
-
+            val readerSettingSheetDialog = ReaderSettingsSheet(this@ReaderActivity)
             setOnClickListener {
-                ReaderSettingsSheet(this@ReaderActivity).show()
+                if (!readerSettingSheetDialog.isShowing()) {
+                    userCanTap = true
+                }
+                if (userCanTap) {
+                    readerSettingSheetDialog.show()
+                    userCanTap = false
+                }
             }
 
             setOnLongClickListener {
