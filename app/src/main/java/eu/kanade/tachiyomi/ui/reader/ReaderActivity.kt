@@ -512,11 +512,7 @@ class ReaderActivity : BaseRxActivity<ReaderPresenter>() {
             val readerSettingSheetDialog = ReaderSettingsSheet(this@ReaderActivity)
             setOnClickListener {
                 if (!readerSettingSheetDialog.isShowing()) {
-                    userCanTap = true
-                }
-                if (userCanTap) {
                     readerSettingSheetDialog.show()
-                    userCanTap = false
                 }
             }
 
